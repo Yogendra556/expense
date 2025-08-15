@@ -10,19 +10,44 @@ const dashboard = () => {
     const [categoryA, setcategoryA] = useState("Expense")
     const [categoryB, setcategoryB] = useState("")
     const [data, setdata] = useState([])
+    const [refresh, setrefresh] = useState(true)
+    const [balance, setbalance] = useState(0)
+
     const userData = async (req) => {
         const res = await axios.get("/api/users/userData")
         setdata(res.data.transaction)
     }
+    const getBalance = async() => {
+  const total = data.reduce((acc, item) => {
+    if (item.categoryA === "Expense") {
+      return acc - item.amount;
+    } else {
+      return acc + item.amount;
+    }
+  }, 0); // Start from 0
+
+  setbalance(total);
+};
+
+  
 
     useEffect(() => {
+        setbalance(0)
         userData()
         console.log(data)
-    }, [view])
+    }, [view,refresh])
+    useEffect(() => {
+  getBalance(); // Runs after data is updated
+}, [data]);
+
+ 
+
 
     // In axios delete you cant put data directly like post use {data:{value}}
     const deleteData = async(value)=>{
+        setbalance(0)
         userData()
+        setrefresh(!refresh)
         console.log(value)
         const res = await axios.delete("/api/users/delete",{data:{ObjectId : value}})
         console.log(res)
@@ -85,16 +110,8 @@ const dashboard = () => {
                 <div className='mt-[6vh] ml-[2vw]'>
                     <div className='bg-gray-900 w-[20vw] rounded-md text-[2vw]' >
                         <div className='px-[3vh] py-[0.5vw]  mt-[4vh] text-gray-400 '>Current Balance</div>
-                        <div className='text-green-300 ml-[1vw]'>+3450 USD</div>
-                    </div>
-                    <div className='bg-gray-900 w-[20vw] rounded-md text-[2vw]' >
-                        <div className='px-[3vh] py-[0.5vw]  mt-[4vh] text-gray-400'>Income</div>
-                        <div className='text-green-300 ml-[1vw]'>+3450 USD</div>
-                    </div>
-                    <div className='bg-gray-900 w-[20vw] rounded-md text-[2vw]' >
-                        <div className='px-[3vh] py-[0.5vw]  mt-[4vh] text-gray-400'>Expense</div>
-                        <div className='text-red-300 ml-[1vw]'>-3450 USD</div>
-                    </div>
+                        <div className='text-green-300 ml-[1vw]'>{balance}</div>
+                    </div>   
                 </div>
                 <div className='mt-[8vh]'>
                     <div className='text-2xl text-gray-400'>Past Transactions</div>
