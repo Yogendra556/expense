@@ -32,20 +32,26 @@ const dashboard = () => {
   
 
     useEffect(() => {
-        setbalance(0)
         userData()
-        console.log(data)
+      
     }, [view,refresh])
     useEffect(() => {
-  getBalance(); // Runs after data is updated
+  const total = data.reduce((acc, item) =>
+    item.categoryA === "Expense"
+      ? acc - item.amount
+      : acc + item.amount,
+    0
+  );
+  setbalance(total);
 }, [data]);
+
 
  
 
 
     // In axios delete you cant put data directly like post use {data:{value}}
     const deleteData = async(value)=>{
-        setbalance(0)
+       
         userData()
         setrefresh(!refresh)
         console.log(value)
