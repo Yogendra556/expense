@@ -4,7 +4,7 @@ import axios from "axios"
 import router, { useRouter } from "next/navigation"
 
 
-export default function sidebar(){
+export default function Sidebar(){
     const router = useRouter() 
       const signout = async()=>{
         const res = await axios.get('/api/users/logout')

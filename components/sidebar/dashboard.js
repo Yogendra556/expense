@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useEffect } from 'react';
 import Select from 'react-select';
 
-const dashboard = () => {
+const Dashboard = () => {
     const [view, setview] = useState(false)
     const [categoryA, setcategoryA] = useState("Expense")
     const [categoryB, setcategoryB] = useState("")
@@ -176,4 +176,4 @@ const dashboard = () => {
     )
 }
 
-export default dashboard
+export default Dashboard

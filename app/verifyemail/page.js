@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { NextResponse } from 'next/server'
 
-export default function verifyEmailPage(){
+export default function VerifyEmailPage(){
     const [token, settoken] = useState("")
    
     const router = useRouter()

@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 
-export default function sentmailPage(){
+export default function SentmailPage(){
 
     return(
         <div>

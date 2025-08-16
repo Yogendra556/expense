@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { NextResponse } from 'next/server'
 
-const changePasswordPage = () => {
+const ChangePasswordPage = () => {
     const [newPassword, setnewPassword] = useState("")
     const [token, settoken] = useState("")
     const [data,setdata] = useState([])
@@ -44,4 +44,4 @@ const changePasswordPage = () => {
   )
 }
 
-export default changePasswordPage
+export default ChangePasswordPage

@@ -10,7 +10,7 @@ import Select from 'react-select';
 
 
 
-export default function profilePage() {
+export default function ProfilePage() {
     const [user, setuser] = useState("")
     const [category, setcategory] = useState("")
     const [transaction, settransaction] = useState([])
