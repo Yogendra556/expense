@@ -17,6 +17,10 @@ export default function profilePage() {
     const [view, setview] = useState("1")
     const [newUser, setnewUser] = useState("")
     
+     useEffect(() => {
+        data()
+        getTransaction()
+    }, [category,user])
       
     const groupedOptions = [
         { value: 'food', label: 'food' },
@@ -65,12 +69,9 @@ export default function profilePage() {
             const res = await axios.delete("/api/users/delete",{data:{ObjectId : value}})
             console.log(res)
         }
-    useEffect(() => {
-        data()
-        getTransaction()
-    }, [category,user])
+   
 
-        const callChange = async()=>{
+    const callChange = async()=>{
         setview("2")
         await axios.get("/api/users/changePassword")
         

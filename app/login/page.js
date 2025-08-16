@@ -6,11 +6,16 @@ import toast from "react-hot-toast"
 import { getDataFromToken } from "@/helper/getDataFromToken"
 
 export default function LoginPage() {
+  const router = useRouter()
   const [data, setdata] = useState({email: "", password: "" })
   const [buttonDisabled, setbuttonDisabled] = useState(false)
-
-  const router = useRouter()
   const [err, seterr] = useState("")
+
+  useEffect(() => {
+    if (data.email.length > 0 && data.password.length > 0) {
+      setbuttonDisabled(true)
+    }
+  }, [data])
 
 
   const submit = async () => {
@@ -29,13 +34,7 @@ export default function LoginPage() {
     }
   }
 
-  useEffect(() => {
-    if (data.email.length > 0 && data.password.length > 0) {
-      setbuttonDisabled(true)
-    }
-  }, [data])
-
-
+  
   return (
     
     <div className="bg-gradient-to-b from-[rgb(240,84,165)] to-[#041284] via-[#2E3CAB] min-h-[100vh] ">

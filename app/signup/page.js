@@ -5,11 +5,16 @@ import axios from "axios"
 import toast from "react-hot-toast"
 
 export default function Signup() {
+  const router = useRouter()
   const [user, setuser] = useState({ username: "", email: "", password: "" })
   const [buttonDisabled, setbuttonDisabled] = useState(false)
 
-  const router = useRouter()
-
+  
+  useEffect(() => {
+    if (user.username.length > 0 && user.email.length > 0 && user.password.length > 0) {
+      setbuttonDisabled(true)
+    }
+  }, [user])
 
   const submit = async () => {
     try {
@@ -26,12 +31,6 @@ export default function Signup() {
       console.log(error)
     }
   }
-
-  useEffect(() => {
-    if (user.username.length > 0 && user.email.length > 0 && user.password.length > 0) {
-      setbuttonDisabled(true)
-    }
-  }, [user])
 
 
   return (
