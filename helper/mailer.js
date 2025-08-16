@@ -27,12 +27,14 @@ export async function sendEmail({email, emailType, userId}) {
             )
         }
 
+   console.log(process.env.MAILTRAP_HOST)
+   console.log(process.env.MAILTRAP_PASS)
         var transport = nodemailer.createTransport({
-            host: process.env.HOST,
-            port: Number(process.env.UserPORT),
+            host: process.env.MAILTRAP_HOST,
+            port: 2525,
             auth: {
-                user: process.env.USER,
-                pass: process.env.PASS
+                user: process.env.MAILTRAP_USER,
+                pass: process.env.MAILTRAP_PASS
             }
         });
 

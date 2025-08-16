@@ -28,15 +28,16 @@ export async function POST(request){
        })
 
        const savedUser = await newUser.save()
-       console.log(savedUser)
+      // console.log(savedUser)
 
 
        const b = await sendEmail({email,emailType:"VERIFY",userId:savedUser._id})
-      //  console.log(b)
+       console.log(b)
        return NextResponse.json(
        { 
         message : "User registered succesfully",
         success : true,
+        Staus:267,
         savedUser
        }
        )
