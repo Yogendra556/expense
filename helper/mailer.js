@@ -30,7 +30,6 @@ export async function sendEmail({email, emailType, userId}) {
         var transport = nodemailer.createTransport({
             host: process.env.HOST,
             port: Number(process.env.UserPORT),
-            secure : false,
             auth: {
                 user: process.env.USER,
                 pass: process.env.PASS
