@@ -28,11 +28,11 @@ export async function sendEmail({email, emailType, userId}) {
         }
 
         var transport = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
-            port: 587,
+            host: process.env.HOST,
+            port: Number(process.env.UserPORT),
             auth: {
-                user: "f8e94f5b62631e",
-                pass: "91d7a8d617c500"
+                user: process.env.USER,
+                pass: process.env.PASS
             }
         });
 
