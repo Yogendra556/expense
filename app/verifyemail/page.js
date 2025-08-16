@@ -6,14 +6,13 @@ import Link from 'next/link'
 import { NextResponse } from 'next/server'
 
 export default function VerifyEmailPage(){
+     const router = useRouter()
     const [token, settoken] = useState("")
    
-    const router = useRouter()
-
-   useEffect(()=>{
+   
+    useEffect(()=>{
     const urltoken =  window.location.search.split("=")[1]
     settoken(urltoken)
-    console.log({token})
    },[])
 
    const send = async()=>{

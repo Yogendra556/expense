@@ -2,7 +2,7 @@
 import React from 'react'
 import axios from "axios"
 import router, { useRouter } from "next/navigation"
-
+import Script from 'next/script'
 
 export default function Sidebar(){
     const router = useRouter() 
@@ -20,7 +20,8 @@ export default function Sidebar(){
             <div className='fixed'>
             <div className='text-2xl text-white p-[3vh]'>EXPENSE</div>
             <div className='flex items-center pl-[2vh] pt-[1vh] text-gray-400'><div className=''>
-                <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                {/* Use import script then use this script otherwise vercel wont let deploy */}
+                <Script src="https://cdn.lordicon.com/lordicon.js"/>
                 <lord-icon
                     src="https://cdn.lordicon.com/shcfcebj.json"
                     trigger="hover"
@@ -32,7 +33,7 @@ export default function Sidebar(){
 
             <div className='flex items-center pl-[2vh] pt-[1vh]  text-gray-400'>
                 <div className=''>
-                    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <Script src="https://cdn.lordicon.com/lordicon.js"/>
     <lord-icon
     src="https://cdn.lordicon.com/ysqeagpz.json"
     trigger="hover"

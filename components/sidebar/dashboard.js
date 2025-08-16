@@ -112,7 +112,7 @@ const Dashboard = () => {
                 <div className='mt-[8vh]'>
                     <div className='text-2xl text-gray-400'>Past Transactions</div>
                     {data.slice(0, 5).map((item) => (
-                        <div className='relative border-1 border-white rounded-md min-w-[40vw] pl-[2vw] mt-[2vh] flex flex-col'>
+                        <div key={item._id} className='relative border-1 border-white rounded-md min-w-[40vw] pl-[2vw] mt-[2vh] flex flex-col'>
                             <div className='flex flex-row'><div className={item.categoryA === "Expense" ? 'text-red-400 text-xl' : "text-green-400 text-xl"}>{item.categoryA}</div><div className='ml-[27vw] fixed'>Date</div><div className='fixed ml-[18vw]'>Time</div></div>
                             <div className='flex flex-row items-center'>
                                 <div className='text-white'>Category : {item.categoryB}</div><div className='text-white pl-[5vh]'>Amount : {item.amount}</div>

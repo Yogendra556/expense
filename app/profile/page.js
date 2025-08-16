@@ -99,7 +99,7 @@ export default function ProfilePage() {
                 /></div>
 <div className='pl-[2vw]'>
     {category!=="" && transaction.filter((item)=>item.categoryB===category).map(item=>(
-        <div className='border-1 border-white rounded-md min-w-[40vw] pl-[2vw] mt-[2vh] flex flex-col'>
+        <div key={item._id} className='border-1 border-white rounded-md min-w-[40vw] pl-[2vw] mt-[2vh] flex flex-col'>
                     <div className='flex flex-row'><div className={item.categoryA === "Expense" ? 'text-red-400 text-xl' : "text-green-400 text-xl"}>{item.categoryA}</div><div className='ml-[27vw] relative'>Date</div><div className='relative ml-[18vw]'>Time</div></div>
                     <div className='flex flex-row items-center'>
                         <div className='text-white'>Category : {item.categoryB}</div><div className='text-white pl-[5vh]'>Amount : {item.amount}</div>
@@ -112,7 +112,7 @@ export default function ProfilePage() {
                 </div>
     ))}
             {category === "" && transaction.map((item) => (
-                <div className='relative border-1 border-white rounded-md min-w-[40vw] pl-[2vw] mt-[2vh] flex flex-col'>
+                <div key={item._id} className='relative border-1 border-white rounded-md min-w-[40vw] pl-[2vw] mt-[2vh] flex flex-col'>
                     <div className='flex flex-row'><div className={item.categoryA === "Expense" ? 'text-red-400 text-xl' : "text-green-400 text-xl"}>{item.categoryA}</div><div className='ml-[27vw] relative'>Date</div><div className='relative ml-[18vw]'>Time</div></div>
                     <div className='flex flex-row items-center'>
                         <div className='text-white'>Category : {item.categoryB}</div><div className='text-white pl-[5vh]'>Amount : {item.amount}</div>
