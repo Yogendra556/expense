@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import router, { useRouter } from "next/navigation"
 import axios from "axios"
 import toast from "react-hot-toast"
-import { getDataFromToken } from "@/helper/getDataFromToken"
+
 
 export default function LoginPage() {
   const router = useRouter()
